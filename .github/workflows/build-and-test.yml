@@ -33,7 +33,7 @@ jobs:
               if: success() || failure()
               with:
                 name: JUNIT Tests
-                path: target/site/jacoco/index.html
+                path: '*.xml'
                 reporter: jest-junit 
 
             - name: Front Install Dependencies
@@ -54,7 +54,7 @@ jobs:
               if: success() || failure()
               with:
                 name: JEST Tests
-                path: front/coverage/jest/lcov-report/index.html
+                path: '*.xml'
                 reporter: jest-junit 
 
             - name: Read output variables
