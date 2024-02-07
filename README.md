@@ -17,11 +17,6 @@ Get a daily joke from this funny french Bob's App !
         <img src="https://img.shields.io/github/issues/duchenedaphne/bob-app" alt="GitHub issues">
     </a>
 </p>
-<p>
-    <a href="https://github.com/duchenedaphne/bob-app/releases">
-        <img src="https://img.shields.io/github/v/release/duchenedaphne/bob-app.svg?style=flat" alt="GitHub Release">
-    </a>
-</p>
 
 ## 🛠 Software tools
 
