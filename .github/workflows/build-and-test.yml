@@ -55,7 +55,7 @@ jobs:
               working-directory: front
 
             - name: Front Test
-              run: npm run test -- --watch=false --browsers=ChromeHeadless -- --coverage
+              run: npm run test -- -- --coverage=true --watch=false --browsers=ChromeHeadless
               working-directory: front
 
             - name: Jest Test Report
