@@ -1,0 +1,37 @@
+
+name: Build and Test
+
+on: 
+    push:
+        branches:
+            - main
+    pull_request:
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: Front Install Dependencies
+              run: npm install
+              working-directory: front
+
+            - name: Front Build
+              run: npm run build
+              working-directory: front
+
+            - name: Front Test
+              run: npm test
+              working-directory: front
+
+            - name: Back Install Dependencies
+              run: mvn clean install
+              working-directory: back
+
+            - name: Back Test
+              run: mvn clean test
+              working-directory: back
+

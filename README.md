@@ -6,6 +6,9 @@ Get a daily joke from this funny french Bob's App !
     <a href="https://github.com/duchenedaphne/bob-app/actions/workflows/github-actions-demo.yml">
         <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/github-actions-demo.yml/badge.svg" alt="Demo" style="max-width: 100%;">
     </a>
+    <a href="https://github.com/duchenedaphne/bob-app/actions/workflows/build-and-test.yml">
+        <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/build-and-test.yml/badge.svg" alt="Build and Test" style="max-width: 100%;">
+    </a>
 </p>
 <p>
     <img src="https://img.shields.io/github/languages/code-size/duchenedaphne/bob-app" alt="GitHub code size in bytes">
@@ -69,7 +72,7 @@ Launch Back-end:
 
 Launch the tests:
 
-> mvn clean install
+> mvn clean test
 
 ### Docker
 
