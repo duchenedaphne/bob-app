@@ -38,7 +38,7 @@ jobs:
               if: success() || failure()
               with:
                 name: JUNIT Tests
-                path: '**/*.xml'
+                path: '**/target/site/jacoco/index.html'
                 reporter: jest-junit
                 working-directory: back
 
@@ -64,7 +64,7 @@ jobs:
               if: success() || failure()
               with:
                 name: JEST Tests
-                path: '**/*.xml'
+                path: '**/coverage/jest/lcov-report/index.html'
                 reporter: jest-junit 
                 working-directory: front
 
