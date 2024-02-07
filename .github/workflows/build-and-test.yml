@@ -39,3 +39,16 @@ jobs:
               run: npm run test -- --watch=false --browsers=ChromeHeadless
               working-directory: front
 
+            - name: Test Report
+              uses: phoenix-actions/test-reporting@v8
+              id: test-report
+              if: success() || failure()
+              with:
+                name: JEST Tests
+                path: reports/jest-*.xml
+                reporter: jest-junit 
+
+            - name: Read output variables
+              run: |
+                echo "url is ${{ steps.test-report.outputs.runHtmlUrl }}"
+
