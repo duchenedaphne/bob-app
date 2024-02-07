@@ -13,7 +13,7 @@ jobs:
 
         permissions:
           id-token: write
-          contents: read
+          contents: write
           checks: write
 
         steps:
@@ -33,7 +33,7 @@ jobs:
               working-directory: back
 
             - name: Test Report
-              uses: phoenix-actions/test-reporting@v8
+              uses: dorny/test-reporter@v1
               id: junit-test-report
               if: success() || failure()
               with:
@@ -54,7 +54,7 @@ jobs:
               working-directory: front
 
             - name: Test Report
-              uses: phoenix-actions/test-reporting@v8
+              uses: dorny/test-reporter@v1
               id: jest-test-report
               if: success() || failure()
               with:
