@@ -19,12 +19,12 @@ jobs:
               run: mvn clean install
               working-directory: back
 
-            - name: Back Test
-              run: mvn clean test
+            - name: Back Build
+              run: mvn clean package
               working-directory: back
 
-            - name: Back Run
-              run: mvn spring-boot:run
+            - name: Back Test
+              run: mvn clean test
               working-directory: back
 
             - name: Front Install Dependencies
