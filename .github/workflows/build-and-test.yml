@@ -33,13 +33,18 @@ jobs:
               working-directory: back
 
             - name: Test Report
-              uses: dorny/test-reporter@v1
+              uses: phoenix-actions/test-reporting@v8
               id: junit-test-report
               if: success() || failure()
               with:
                 name: JUNIT Tests
                 path: '**/*.xml'
-                reporter: jest-junit 
+                reporter: jest-junit
+                working-directory: back
+
+            - name: Read output variables
+              run: |
+                echo "url is ${{ steps.junit-test-report.outputs.runHtmlUrl }}"
 
             - name: Front Install Dependencies
               run: npm install
@@ -54,16 +59,16 @@ jobs:
               working-directory: front
 
             - name: Test Report
-              uses: dorny/test-reporter@v1
+              uses: phoenix-actions/test-reporting@v8
               id: jest-test-report
               if: success() || failure()
               with:
                 name: JEST Tests
                 path: '**/*.xml'
                 reporter: jest-junit 
+                working-directory: front
 
             - name: Read output variables
               run: |
-                echo "url is ${{ steps.junit-test-report.outputs.runHtmlUrl }}"
                 echo "url is ${{ steps.jest-test-report.outputs.runHtmlUrl }}"
 
