@@ -27,6 +27,15 @@ jobs:
               run: mvn clean test
               working-directory: back
 
+            - name: Test Report
+              uses: phoenix-actions/test-reporting@v8
+              id: junit-test-report
+              if: success() || failure()
+              with:
+                name: JUNIT Tests
+                path: target/site/jacoco/index.html
+                reporter: jest-junit 
+
             - name: Front Install Dependencies
               run: npm install
               working-directory: front
@@ -41,11 +50,11 @@ jobs:
 
             - name: Test Report
               uses: phoenix-actions/test-reporting@v8
-              id: test-report
+              id: jest-test-report
               if: success() || failure()
               with:
                 name: JEST Tests
-                path: reports/jest-*.xml
+                path: front/coverage/jest/lcov-report/index.html
                 reporter: jest-junit 
 
             - name: Read output variables
