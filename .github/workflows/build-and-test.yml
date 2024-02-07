@@ -41,6 +41,6 @@ jobs:
               working-directory: front
 
             - name: Front Test
-              run: npm run test -- --watch=false --coverage --browsers=ChromeHeadless
+              run: npm run test -- --watch=true --browsers=ChromeHeadless
               working-directory: front
 
