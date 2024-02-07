@@ -64,7 +64,7 @@ jobs:
               if: success() || failure()
               with:
                 name: JEST Tests
-                path: '**/coverage/jest/lcov-report/index.html'
+                path: '**/coverage/bobapp/index.html'
                 reporter: jest-junit 
                 working-directory: front
 
