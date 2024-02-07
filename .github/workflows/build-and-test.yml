@@ -12,6 +12,7 @@ jobs:
         runs-on: ubuntu-latest
 
         permissions:
+          id-token: write
           contents: write
           checks: write
 
@@ -37,7 +38,7 @@ jobs:
               if: success() || failure()
               with:
                 name: JUNIT Tests
-                path: '*.xml'
+                path: '**/*.xml'
                 reporter: jest-junit 
 
             - name: Front Install Dependencies
@@ -58,10 +59,11 @@ jobs:
               if: success() || failure()
               with:
                 name: JEST Tests
-                path: '*.xml'
+                path: '**/*.xml'
                 reporter: jest-junit 
 
             - name: Read output variables
               run: |
-                echo "url is ${{ steps.test-report.outputs.runHtmlUrl }}"
+                echo "url is ${{ steps.junit-test-report.outputs.runHtmlUrl }}"
+                echo "url is ${{ steps.jest-test-report.outputs.runHtmlUrl }}"
 
