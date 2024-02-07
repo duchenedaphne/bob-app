@@ -36,6 +36,6 @@ jobs:
               working-directory: front
 
             - name: Front Test
-              run: npm test
+              run: npm run test
               working-directory: front
 
