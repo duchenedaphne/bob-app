@@ -15,6 +15,18 @@ jobs:
             - name: Checkout Code
               uses: actions/checkout@v4
 
+            - name: Back Install Dependencies
+              run: mvn clean install
+              working-directory: back
+
+            - name: Back Test
+              run: mvn clean test
+              working-directory: back
+
+            - name: Back Run
+              run: mvn spring-boot:run
+              working-directory: back
+
             - name: Front Install Dependencies
               run: npm install
               working-directory: front
@@ -26,12 +38,4 @@ jobs:
             - name: Front Test
               run: npm test
               working-directory: front
-
-            - name: Back Install Dependencies
-              run: mvn clean install
-              working-directory: back
-
-            - name: Back Test
-              run: mvn clean test
-              working-directory: back
 
