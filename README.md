@@ -6,6 +6,8 @@ Get a daily joke from this funny french Bob's App !
     <a href="https://github.com/duchenedaphne/bob-app/actions/workflows/github-actions-demo.yml">
         <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/github-actions-demo.yml/badge.svg" alt="Demo" style="max-width: 100%;">
     </a>
+</p>
+<p>
     <img src="https://img.shields.io/github/languages/code-size/duchenedaphne/bob-app" alt="GitHub code size in bytes">
     <img src="https://img.shields.io/github/commit-activity/w/duchenedaphne/bob-app" alt="GitHub commit activity">
     <a href="https://github.com/duchenedaphne/bob-app/issues">
