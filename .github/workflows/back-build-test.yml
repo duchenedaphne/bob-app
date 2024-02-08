@@ -39,19 +39,19 @@ jobs:
                 flags: backend
                 working-directory: back
 
-            # - name: JUnit Test Report
-            #   uses: phoenix-actions/test-reporting@v8
-            #   id: junit-test-report
-            #   if: success() || failure()
-            #   with:
-            #     name: JUNIT Tests
-            #     path: '**/target/site/jacoco/index.html'
-            #     reporter: jest-junit
-            #     working-directory: back
+            - name: JUnit Test Report
+              uses: phoenix-actions/test-reporting@v8
+              id: junit-test-report
+              if: success() || failure()
+              with:
+                name: JUNIT Tests
+                path: 'back/target/site/jacoco/jacoco.xml'
+                reporter: jest-junit
+                working-directory: back
 
-            # - name: Read output variables
-            #   run: |
-            #     echo "url is ${{ steps.junit-test-report.outputs.runHtmlUrl }}"
+            - name: Read output variables
+              run: |
+                echo "url is ${{ steps.junit-test-report.outputs.runHtmlUrl }}"
 
             
             
