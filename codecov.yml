@@ -29,7 +29,7 @@ flags:
     frontend:
       paths: #note, accepts globs, not regexes
         - front/**/**.**
-      carryforward: false
+      carryforward: true
     backend:
       paths: #note, accepts globs, not regexes
         - back/**/**.**
