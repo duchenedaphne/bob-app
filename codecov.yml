@@ -28,11 +28,11 @@ comment:
 flags:
     frontend:
       paths: #note, accepts globs, not regexes
-        - front/
+        - front/**.**
       carryforward: false
     backend:
       paths: #note, accepts globs, not regexes
-        - back/
+        - back/**.**
       carryforward: true
       
   

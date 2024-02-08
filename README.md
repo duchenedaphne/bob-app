@@ -10,9 +10,9 @@ Get a daily joke from this funny french Bob's App !
         <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/back-build-test.yml/badge.svg" alt="Back Build & Test" style="max-width: 100%;">
     </a>
 </p>
-<p>
-    [![codecov](https://codecov.io/gh/duchenedaphne/bob-app/graph/badge.svg?token=${{ secrets.GRAPHING_TOKEN }})](https://codecov.io/gh/duchenedaphne/bob-app)
-</p>
+
+[![codecov](https://codecov.io/gh/duchenedaphne/bob-app/graph/badge.svg?token=ILS80G6IS2)](https://codecov.io/gh/duchenedaphne/bob-app)
+
 <p>
     <img src="https://img.shields.io/github/languages/code-size/duchenedaphne/bob-app" alt="GitHub code size in bytes">
     <img src="https://img.shields.io/github/commit-activity/w/duchenedaphne/bob-app" alt="GitHub commit activity">
