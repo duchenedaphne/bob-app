@@ -34,7 +34,7 @@ jobs:
 
             - name: List front files 
               run: |
-                ls ${{ github.workspace }}/front/coverage
+                ls ${{ github.workspace }}/front/coverage/*
 
             - name: Upload Front coverage to Codecov
               uses: codecov/codecov-action@v4
