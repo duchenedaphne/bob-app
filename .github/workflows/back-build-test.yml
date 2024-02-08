@@ -1,5 +1,5 @@
 
-name: Build and Test
+name: Back Build & Test
 
 on: 
     push:
@@ -8,7 +8,7 @@ on:
     pull_request:
 
 jobs:
-    build-and-test:
+    back-build-test:
         runs-on: ubuntu-latest
 
         permissions:
@@ -49,32 +49,5 @@ jobs:
             #   run: |
             #     echo "url is ${{ steps.junit-test-report.outputs.runHtmlUrl }}"
 
-            - name: Front Install Dependencies
-              run: npm install
-              working-directory: front
-
-            - name: Front Build
-              run: npm run build
-              working-directory: front
-
-            - name: Front Test
-              run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless
-              working-directory: front
-
-            # - name: Upload Front coverage to Codecov
-            #   uses: codecov/codecov-action@v1
-
-            # - name: Jest Test Report
-            #   uses: phoenix-actions/test-reporting@v8
-            #   id: jest-test-report
-            #   if: success() || failure()
-            #   with:
-            #     name: JEST Tests
-            #     path: '**/coverage/bobapp/index.html'
-            #     reporter: jest-junit 
-            #     working-directory: front
-
-            # - name: Read output variables
-            #   run: |
-            #     echo "url is ${{ steps.jest-test-report.outputs.runHtmlUrl }}"
-
+            
+            

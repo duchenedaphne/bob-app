@@ -3,11 +3,11 @@
 Get a daily joke from this funny french Bob's App !
 
 <p>
-    <a href="https://github.com/duchenedaphne/bob-app/actions/workflows/github-actions-demo.yml">
-        <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/github-actions-demo.yml/badge.svg" alt="Demo" style="max-width: 100%;">
+    <a href="https://github.com/duchenedaphne/bob-app/actions/workflows/front-build-test.yml">
+        <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/front-build-test.yml/badge.svg" alt="Front Build & Test" style="max-width: 100%;">
     </a>
-    <a href="https://github.com/duchenedaphne/bob-app/actions/workflows/build-and-test.yml">
-        <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/build-and-test.yml/badge.svg" alt="Build and Test" style="max-width: 100%;">
+    <a href="https://github.com/duchenedaphne/bob-app/actions/workflows/back-build-test.yml">
+        <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/back-build-test.yml/badge.svg" alt="Back Build & Test" style="max-width: 100%;">
     </a>
 </p>
 <p>
@@ -20,7 +20,7 @@ Get a daily joke from this funny french Bob's App !
 
 ## 🛠 Software tools
 
-- [Angular CLI](https://github.com/angular/angular-cli) 17
+- [Angular CLI](https://github.com/angular/angular-cli) 14
 - [Java](https://www.oracle.com/java/technologies/downloads/) 11
 - [Spring Boot](https://start.spring.io/;) 2
 - [Docker](https://www.docker.com/products/docker-desktop/)
@@ -32,55 +32,57 @@ Clone this repository :
 
 ## Front-end 
 
-Go inside the front folder:
+1 - Go inside the front folder
 
 > cd front
 
-Install the dependencies:
+2 - Install the dependencies
 
 > npm install
 
-Launch Front-end:
+3 - Launch Front-end
 
-> npm run start
-or
+> npm run start  
+
+or  
+
 > ng serve
 
 ### Docker
 
-Build the container:
+1 - Build the container
 
 > docker build -t bobapp-front .  
 
-Start the container:
+2 - Start the container
 
 > docker run -p 8080:8080 --name bobapp-front -d bobapp-front
 
 ## Back-end
 
-Go inside the back folder:
+1 - Go inside the back folder
 
 > cd back
 
-Install dependencies:
+2 - Install dependencies
 
 > mvn clean install
 
-Launch Back-end:
+3 - Launch Back-end
 
 >  mvn spring-boot:run
 
-Launch the tests:
+4 - Launch the tests
 
 > mvn clean test
 
 ### Docker
 
-Build the container:
+1 - Build the container
 
 > docker build -t bobapp-back .  
 
-Start the container:
+2 - Start the container
 
 > docker run -p 8080:8080 --name bobapp-back -d bobapp-back 
 
