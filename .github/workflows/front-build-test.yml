@@ -21,7 +21,9 @@ jobs:
               uses: actions/checkout@v4
 
             - name: Front Install Dependencies
-              run: npm install
+              run: |
+                npm install
+                npm i karma-coverage-istanbul-reporter --save-dev
               working-directory: front
 
             - name: Front Build
@@ -29,7 +31,7 @@ jobs:
               working-directory: front
 
             - name: Front Test
-              run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless --reporters=kjxml
+              run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless --plugins=karma-coverage-istanbul-reporter
               working-directory: front
 
             - name: List front files 
