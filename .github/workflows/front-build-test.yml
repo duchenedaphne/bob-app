@@ -31,7 +31,7 @@ jobs:
               working-directory: front
 
             - name: Front Test
-              run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless --plugins=karma-coverage-istanbul-reporter
+              run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless
               working-directory: front
 
             - name: List front files 
