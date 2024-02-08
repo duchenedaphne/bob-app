@@ -11,10 +11,6 @@ jobs:
     front-build-test:
         runs-on: ubuntu-latest
 
-        strategy:
-          matrix:
-            node-version: [16.x]
-
         permissions:
           id-token: write
           contents: write
@@ -23,13 +19,6 @@ jobs:
         steps:
             - name: Checkout Code
               uses: actions/checkout@v4
-              with:
-                fetch-depth: 2
-        
-            - name: Set up Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
-              with:
-                node-version: ${{ matrix.node-version }}
 
             - name: Front Install Dependencies
               run: npm install
@@ -42,6 +31,10 @@ jobs:
             - name: Front Test
               run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless
               working-directory: front
+
+            - name: List front files 
+              run: |
+                ls ${{ github.workspace }}/front
 
             - name: Upload Front coverage to Codecov
               uses: codecov/codecov-action@v4
