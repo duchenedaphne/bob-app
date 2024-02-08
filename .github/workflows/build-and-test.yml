@@ -29,22 +29,25 @@ jobs:
               working-directory: back
 
             - name: Back Test
-              run: mvn clean test -DEBUG=mocha*
+              run: mvn clean test
               working-directory: back
 
-            - name: JUnit Test Report
-              uses: phoenix-actions/test-reporting@v8
-              id: junit-test-report
-              if: success() || failure()
-              with:
-                name: JUNIT Tests
-                path: '**/target/site/jacoco/index.html'
-                reporter: jest-junit
-                working-directory: back
+            # - name: Upload Back coverage to Codecov
+            #   uses: codecov/codecov-action@v1
 
-            - name: Read output variables
-              run: |
-                echo "url is ${{ steps.junit-test-report.outputs.runHtmlUrl }}"
+            # - name: JUnit Test Report
+            #   uses: phoenix-actions/test-reporting@v8
+            #   id: junit-test-report
+            #   if: success() || failure()
+            #   with:
+            #     name: JUNIT Tests
+            #     path: '**/target/site/jacoco/index.html'
+            #     reporter: jest-junit
+            #     working-directory: back
+
+            # - name: Read output variables
+            #   run: |
+            #     echo "url is ${{ steps.junit-test-report.outputs.runHtmlUrl }}"
 
             - name: Front Install Dependencies
               run: npm install
@@ -57,6 +60,9 @@ jobs:
             - name: Front Test
               run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless
               working-directory: front
+
+            # - name: Upload Front coverage to Codecov
+            #   uses: codecov/codecov-action@v1
 
             # - name: Jest Test Report
             #   uses: phoenix-actions/test-reporting@v8
