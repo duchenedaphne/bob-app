@@ -28,7 +28,7 @@ comment:
 flags:
     frontend:
       paths: #note, accepts globs, not regexes
-        - front/**/**.**
+        - front/**/**/**.**
       carryforward: true
     backend:
       paths: #note, accepts globs, not regexes
