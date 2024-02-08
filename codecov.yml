@@ -2,8 +2,8 @@
 coverage:
     status:
       project:
-        default: off
-          # target: 70% #overall project/ repo coverage
+        default: 
+          target: 70% #overall project/ repo coverage
         front:
           target: 70%
           flags:
