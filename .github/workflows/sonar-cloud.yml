@@ -27,7 +27,6 @@ jobs:
       - name: Sonar Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-            sonar.java.binaries: back/src/main/java/com/openclassrooms/bobapp/*.java , back/src/main/java/com/openclassrooms/bobapp/**/*.java , back/src/test/java/com/openclassrooms/bobapp/*.java
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
 
