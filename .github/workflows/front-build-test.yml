@@ -29,12 +29,12 @@ jobs:
               working-directory: front
 
             - name: Front Test
-              run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless
+              run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless --reporters=junit
               working-directory: front
 
             - name: List front files 
               run: |
-                ls ${{ github.workspace }}/front/coverage/*
+                ls ${{ github.workspace }}/front/coverage/bobapp
 
             - name: Upload Front coverage to Codecov
               uses: codecov/codecov-action@v4
