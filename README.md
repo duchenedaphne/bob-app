@@ -12,7 +12,8 @@ Get a daily joke from this funny french Bob's App !
 </p>
 
 <p>
-    [![codecov](https://codecov.io/gh/duchenedaphne/bob-app/graph/badge.svg?token=ILS80G6IS2)](https://codecov.io/gh/duchenedaphne/bob-app)
+
+[![codecov](https://codecov.io/gh/duchenedaphne/bob-app/graph/badge.svg?token=ILS80G6IS2)](https://codecov.io/gh/duchenedaphne/bob-app)
     <a href="https://github.com/duchenedaphne/bob-app/actions/workflows/sonar-cloud.yml">
         <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/sonar-cloud.yml/badge.svg" alt="Back Build & Test" style="max-width: 100%;">
     </a>
