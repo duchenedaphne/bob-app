@@ -45,18 +45,18 @@ jobs:
                 flags: frontend
                 working-directory: front
 
-            - name: Jest Test Report
-              uses: phoenix-actions/test-reporting@v8
-              id: jest-test-report
-              if: success() || failure()
-              with:
-                name: JEST Tests
-                path: 'coverage/bobapp/*.*' 
-                # path: 'coverage/bobapp/*.* , coverage/bobapp/app/*.* , coverage/bobapp/app/**/*.*' 
-                reporter: jest-junit 
-                working-directory: front
+            # - name: Jest Test Report
+            #   uses: phoenix-actions/test-reporting@v8
+            #   id: jest-test-report
+            #   if: success() || failure()
+            #   with:
+            #     name: JEST Tests
+            #     path: 'coverage/bobapp/*.*' 
+            #     # path: 'coverage/bobapp/*.* , coverage/bobapp/app/*.* , coverage/bobapp/app/**/*.*' 
+            #     reporter: jest-junit 
+            #     working-directory: front
 
-            - name: Read output variables
-              run: |
-                echo "url is ${{ steps.jest-test-report.outputs.runHtmlUrl }}"
+            # - name: Read output variables
+            #   run: |
+            #     echo "url is ${{ steps.jest-test-report.outputs.runHtmlUrl }}"
 
