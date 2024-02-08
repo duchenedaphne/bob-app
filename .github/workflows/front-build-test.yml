@@ -29,7 +29,7 @@ jobs:
               working-directory: front
 
             - name: Front Test
-              run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless --reporters=xml
+              run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless --reporters=kjxml
               working-directory: front
 
             - name: List front files 
