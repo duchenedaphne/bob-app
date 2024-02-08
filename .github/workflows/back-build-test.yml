@@ -39,6 +39,10 @@ jobs:
                 flags: backend
                 working-directory: back
 
+            - name: List front files 
+              run: |
+                ls ${{ github.workspace }}/back/target/site/jacoco/*
+
             - name: JUnit Test Report
               uses: phoenix-actions/test-reporting@v8
               id: junit-test-report
