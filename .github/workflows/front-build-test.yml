@@ -32,8 +32,11 @@ jobs:
               run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless
               working-directory: front
 
-            # - name: Upload Front coverage to Codecov
-            #   uses: codecov/codecov-action@v1
+            - name: Upload Front coverage to Codecov
+              uses: codecov/codecov-action@v1
+              with:
+                flags: frontend
+                working-directory: front
 
             # - name: Jest Test Report
             #   uses: phoenix-actions/test-reporting@v8

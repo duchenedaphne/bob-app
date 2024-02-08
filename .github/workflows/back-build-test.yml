@@ -32,8 +32,11 @@ jobs:
               run: mvn clean test
               working-directory: back
 
-            # - name: Upload Back coverage to Codecov
-            #   uses: codecov/codecov-action@v1
+            - name: Upload Back coverage to Codecov
+              uses: codecov/codecov-action@v4
+              with:
+                flags: backend
+                working-directory: back
 
             # - name: JUnit Test Report
             #   uses: phoenix-actions/test-reporting@v8

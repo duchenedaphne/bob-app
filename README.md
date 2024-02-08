@@ -11,6 +11,9 @@ Get a daily joke from this funny french Bob's App !
     </a>
 </p>
 <p>
+    [![codecov](https://codecov.io/gh/duchenedaphne/bob-app/graph/badge.svg?token=ILS80G6IS2)](https://codecov.io/gh/duchenedaphne/bob-app)
+</p>
+<p>
     <img src="https://img.shields.io/github/languages/code-size/duchenedaphne/bob-app" alt="GitHub code size in bytes">
     <img src="https://img.shields.io/github/commit-activity/w/duchenedaphne/bob-app" alt="GitHub commit activity">
     <a href="https://github.com/duchenedaphne/bob-app/issues">
