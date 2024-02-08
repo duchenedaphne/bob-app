@@ -45,7 +45,7 @@ jobs:
               if: success() || failure()
               with:
                 name: JUNIT Tests
-                path: 'back/target/site/jacoco/jacoco.xml'
+                path: 'target/site/jacoco/*.*'
                 reporter: jest-junit
                 working-directory: back
 
