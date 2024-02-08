@@ -34,7 +34,7 @@ jobs:
 
             - name: List front files 
               run: |
-                ls ${{ github.workspace }}/front/dist/bobapp/*
+                ls ${{ github.workspace }}/front
 
             - name: Upload Front coverage to Codecov
               uses: codecov/codecov-action@v4
@@ -56,15 +56,4 @@ jobs:
             # - name: Read output variables
             #   run: |
             #     echo "url is ${{ steps.jest-test-report.outputs.runHtmlUrl }}"
-
-            # Run ls /home/runner/work/bob-app/bob-app/front/dist/*
-            #   ls /home/runner/work/bob-app/bob-app/front/dist/*
-            #   shell: /usr/bin/bash -e {0}
-            # 3rdpartylicenses.txt
-            # favicon.ico
-            # index.html
-            # main.74c3c92c4e401b76.js
-            # polyfills.595773b29d44bac7.js
-            # runtime.9c033397618380e0.js
-            # styles.5f698423e5103cba.css
 
