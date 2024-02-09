@@ -54,61 +54,67 @@ jobs:
         run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bob-app
         working-directory: back
 
+      # - name: Front Sonar Cloud Scan
+      #   uses: SonarSource/sonarcloud-github-action@master
+      #   with:
+      #       projectBaseDir: front/
+      #   env:
+      #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #       SONAR_ORGANIZATION: duchenedaphne
+      #       SONAR_PROJECTKEY: duchenedaphne_bob-app
+      #       SONAR_HOST_URL: https://sonarcloud.io
+
+  front-sonar-scan:
+    name: Sonar Cloud
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0 
+
+      # - name: Set up Node JS
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 20 
+
+      # - name: Set up JDK
+      #   uses: actions/setup-java@v4
+      #   with:
+      #     java-version: 17
+      #     distribution: 'zulu'
+
+      # - name: Cache SonarCloud packages
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: ~/.sonar/cache
+      #     key: ${{ runner.os }}-sonar
+      #     restore-keys: ${{ runner.os }}-sonar
+
+      # - name: Cache Maven packages
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: ~/.m2
+      #     key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+      #     restore-keys: ${{ runner.os }}-m2
+
+      # - name: List files 
+      #   run: |
+      #     ls ${{ github.workspace }}/back/src/main/java/com/openclassrooms/*
+
       - name: Front Sonar Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
-        with:
-            projectBaseDir: front/
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-            sonar.organization: duchenedaphne
-            sonar.projectKey: duchenedaphne_bob-app
-            sonar.host.url: https://sonarcloud.io
-
-  # front-sonar-scan:
-  #   name: Sonar Cloud
-
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         # Shallow clones should be disabled for a better relevancy of analysis
-  #         fetch-depth: 0 
-
-  #     - name: Set up Node JS
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 20 
-
-  #     - name: Set up JDK
-  #       uses: actions/setup-java@v4
-  #       with:
-  #         java-version: 17
-  #         distribution: 'zulu'
-
-  #     - name: Cache SonarCloud packages
-  #       uses: actions/cache@v4
-  #       with:
-  #         path: ~/.sonar/cache
-  #         key: ${{ runner.os }}-sonar
-  #         restore-keys: ${{ runner.os }}-sonar
-
-  #     - name: Cache Maven packages
-  #       uses: actions/cache@v4
-  #       with:
-  #         path: ~/.m2
-  #         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-  #         restore-keys: ${{ runner.os }}-m2
-
-  #     - name: List files 
-  #       run: |
-  #         ls ${{ github.workspace }}/back/src/main/java/com/openclassrooms/*
-
-  #     - name: Front Sonar Cloud Scan
-  #       uses: SonarSource/sonarcloud-github-action@master
-  #       env:
-  #           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  #       with:
-  #           projectBaseDir: front/
+            # SONAR_ORGANIZATION: duchenedaphne
+            # SONAR_PROJECTKEY: duchenedaphne_bob-app
+            # SONAR_HOST_URL: https://sonarcloud.io
+        with:
+            projectBaseDir: front/
+            # sonar.organization: duchenedaphne
+            # sonar.projectKey: duchenedaphne_bob-app
+            # sonar.host.url: https://sonarcloud.io
 
 
