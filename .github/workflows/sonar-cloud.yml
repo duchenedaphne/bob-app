@@ -2,12 +2,10 @@
 name: Sonar Cloud
 
 on:
-  push:
-    branches:
-      - main
-
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_run:
+    workflows: ["Back Build & Test", "Front Build & Test"]
+    types:
+      - completed
 
 jobs:
   sonar-cloud:
@@ -63,7 +61,7 @@ jobs:
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
             # SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         # with:
-            projectBaseDir: front/
+            working-directory: front
 
 # ERROR: Error during SonarScanner execution
 # org.sonar.java.AnalysisException: Your project contains .java files, 
