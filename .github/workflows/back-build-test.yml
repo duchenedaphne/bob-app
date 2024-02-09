@@ -2,10 +2,10 @@
 name: Back Build & Test
 
 on: 
-    push:
-        branches:
-            - main
-    pull_request:
+  push:
+      branches:
+          - main
+  pull_request:
 
 jobs:
     back-build-test:
@@ -20,12 +20,25 @@ jobs:
             - name: Checkout Code
               uses: actions/checkout@v4
 
+            - name: Set up JDK
+              uses: actions/setup-java@v3
+              with:
+                java-version: 11
+                distribution: 'zulu'
+
+            - name: Cache Maven packages
+              uses: actions/cache@v3
+              with:
+                path: ~/.m2
+                key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+                restore-keys: ${{ runner.os }}-m2
+
             - name: Back Install Dependencies
               run: mvn clean install
               working-directory: back
 
             - name: Back Build
-              run: mvn clean package
+              run: mvn clean package --file pom.xml
               working-directory: back
 
             - name: Back Test
