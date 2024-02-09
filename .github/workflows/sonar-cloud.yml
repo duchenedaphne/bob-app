@@ -42,9 +42,9 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: List front files 
+      - name: List files 
         run: |
-          ls ${{ github.workspace }}
+          ls ${{ github.workspace }}/back
 
       - name: Back Sonar Cloud Scan
         env:
