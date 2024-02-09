@@ -3,11 +3,8 @@
 Get a daily joke from this funny french Bob's App !
 
 <p>
-    <a href="https://github.com/duchenedaphne/bob-app/actions/workflows/front-build-test.yml">
-        <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/front-build-test.yml/badge.svg" alt="Front Build & Test" style="max-width: 100%;">
-    </a>
-    <a href="https://github.com/duchenedaphne/bob-app/actions/workflows/back-build-test.yml">
-        <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/back-build-test.yml/badge.svg" alt="Back Build & Test" style="max-width: 100%;">
+    <a href="https://github.com/duchenedaphne/bob-app/actions/workflows/build-test.yml">
+        <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/build-test.yml/badge.svg" alt="Front Build & Test" style="max-width: 100%;">
     </a>
 </p>
 
