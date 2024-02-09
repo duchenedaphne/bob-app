@@ -8,7 +8,7 @@ on:
       - completed
 
 jobs:
-  sonar-cloud:
+  back-sonar-cloud:
     name: Sonar Cloud
 
     runs-on: ubuntu-latest
@@ -53,6 +53,17 @@ jobs:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bob-app
         working-directory: back
+
+  sonar-cloud:
+    name: Sonar Cloud
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0 
 
       - name: Front Sonar Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
