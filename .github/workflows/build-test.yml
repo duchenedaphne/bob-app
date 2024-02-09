@@ -46,31 +46,6 @@ jobs:
               run: mvn clean test
               working-directory: back
 
-            - name: Upload Back coverage to Codecov
-              uses: codecov/codecov-action@v4
-              with:
-                token: ${{ secrets.CODECOV_TOKEN }}
-                flags: backend
-                working-directory: back
-
-            - name: List front files 
-              run: |
-                ls ${{ github.workspace }}/back/target/site/jacoco/*
-
-            # - name: JUnit Test Report
-            #   uses: phoenix-actions/test-reporting@v8
-            #   id: junit-test-report
-            #   if: success() || failure()
-            #   with:
-            #     name: JUNIT Tests
-            #     path: 'target/site/jacoco/*.*'
-            #     reporter: jest-junit
-            #     working-directory: back
-
-            # - name: Read output variables
-            #   run: |
-            #     echo "url is ${{ steps.junit-test-report.outputs.runHtmlUrl }}"
-
     front-build-test:
       runs-on: ubuntu-latest
 
@@ -97,32 +72,3 @@ jobs:
             run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless
             working-directory: front
 
-          - name: List front files 
-            run: |
-              ls ${{ github.workspace }}/front/coverage/bobapp
-
-          - name: Upload Front coverage to Codecov
-            uses: codecov/codecov-action@v4
-            with:
-              token: ${{ secrets.CODECOV_TOKEN }}
-              flags: frontend
-              working-directory: front
-
-          # - name: Jest Test Report
-          #   uses: phoenix-actions/test-reporting@v8
-          #   id: jest-test-report
-          #   if: success() || failure()
-          #   with:
-          #     name: JEST Tests
-          #     path: 'coverage/bobapp/*.*' 
-          #     # path: 'coverage/bobapp/*.*,coverage/bobapp/app/*.*,coverage/bobapp/app/**/*.*' 
-          #     reporter: jest-junit 
-          #     working-directory: front
-
-          # - name: Read output variables
-          #   run: |
-          #     echo "url is ${{ steps.jest-test-report.outputs.runHtmlUrl }}"
-
-
-            
-            

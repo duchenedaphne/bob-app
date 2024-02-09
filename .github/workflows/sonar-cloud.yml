@@ -10,8 +10,6 @@ on:
 
 jobs:
   back-sonar-cloud:
-    name: Sonar Cloud
-
     runs-on: ubuntu-latest
 
     steps:
@@ -56,8 +54,6 @@ jobs:
         working-directory: back
 
   front-sonar-cloud:
-    name: Sonar Cloud
-
     runs-on: ubuntu-latest
     defaults: 
       run:  
@@ -71,8 +67,14 @@ jobs:
 
       - name: Front Sonar Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
+        # working-directory: front
         with:
-          projectBaseDir: front/
+          # projectBaseDir: front/
+          args: >
+            -Dsonar.organization=duchenedaphne
+            -Dsonar.projectKey=duchenedaphne_bob-app
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.working.directory=front
           # working-directory: front
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
