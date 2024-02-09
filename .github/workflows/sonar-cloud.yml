@@ -68,3 +68,5 @@ jobs:
 # org.sonar.java.AnalysisException: Your project contains .java files, 
 # please provide compiled classes with sonar.java.binaries property, 
 # or exclude them from the analysis with sonar.exclusions property.
+
+# java.lang.IllegalStateException: No files nor directories matching '**/*.classe'
