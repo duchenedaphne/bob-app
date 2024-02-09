@@ -1,5 +1,6 @@
 
 name: Sonar Cloud
+run-name: Sonar Cloud
 
 on:
   workflow_run:
@@ -59,7 +60,7 @@ jobs:
 
     runs-on: ubuntu-latest
     defaults: 
-      run:
+      run:  
         working-directory: front
 
     steps:
@@ -70,6 +71,9 @@ jobs:
 
       - name: Front Sonar Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: front/
+          # working-directory: front
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 

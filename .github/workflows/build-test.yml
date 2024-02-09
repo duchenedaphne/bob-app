@@ -1,5 +1,6 @@
 
 name: Build & Test
+run-name: Build & Test
 
 on: 
   push:
