@@ -51,7 +51,7 @@ jobs:
       #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       #   #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
             # SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      #   run: mvn -B sonar:sonar verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.java.binaries=**/*.classe -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bob-app
+      #   run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.java.binaries=**/*.class -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bob-app
       #   # with:
       #   working-directory: back
 
