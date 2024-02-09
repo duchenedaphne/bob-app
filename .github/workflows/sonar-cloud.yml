@@ -57,10 +57,8 @@ jobs:
             # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
             # SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bob-app
-        # -Dsonar.java.binaries=**/*.class
-        # with:
         working-directory: back
-        
+
       - name: Front Sonar Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
@@ -70,9 +68,4 @@ jobs:
         # with:
             working-directory: front
 
-# ERROR: Error during SonarScanner execution
-# org.sonar.java.AnalysisException: Your project contains .java files, 
-# please provide compiled classes with sonar.java.binaries property, 
-# or exclude them from the analysis with sonar.exclusions property.
 
-# java.lang.IllegalStateException: No files nor directories matching '**/*.classe'
