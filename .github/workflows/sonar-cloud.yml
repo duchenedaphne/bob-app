@@ -3,7 +3,7 @@ name: Sonar Cloud
 
 on:
   workflow_run:
-    workflows: ["Back Build & Test", "Front Build & Test"]
+    workflows: ["Back Build & Test"]
     types:
       - completed
 
@@ -21,11 +21,11 @@ jobs:
           # Shallow clones should be disabled for a better relevancy of analysis
           fetch-depth: 0  
 
-      # - name: Set up JDK
-      #   uses: actions/setup-java@v3
-      #   with:
-      #     java-version: 17
-      #     distribution: 'zulu'
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'zulu'
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
@@ -34,12 +34,12 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
-      # - name: Cache Maven packages
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ~/.m2
-      #     key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-      #     restore-keys: ${{ runner.os }}-m2
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
 
       - name: List files 
         run: |
