@@ -60,9 +60,9 @@ jobs:
             projectBaseDir: front/
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-            SONAR_ORGANIZATION: duchenedaphne
-            SONAR_PROJECTKEY: duchenedaphne_bob-app
-            SONAR_HOST_URL: https://sonarcloud.io
+            sonar.organization: duchenedaphne
+            sonar.projectKey: duchenedaphne_bob-app
+            sonar.host.url: https://sonarcloud.io
 
   # front-sonar-scan:
   #   name: Sonar Cloud
