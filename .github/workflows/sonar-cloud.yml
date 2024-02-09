@@ -44,8 +44,7 @@ jobs:
 
       - name: List files 
         run: |
-          ls ${{ github.workspace }}/back/src/main/java/com/
-            openclassrooms/*
+          ls ${{ github.workspace }}/back/src/main/java/com/openclassrooms/*
 
       # - name: Back Sonar Cloud Scan
       #   env:

@@ -52,7 +52,7 @@ jobs:
             #   with:
             #     name: JEST Tests
             #     path: 'coverage/bobapp/*.*' 
-            #     # path: 'coverage/bobapp/*.* , coverage/bobapp/app/*.* , coverage/bobapp/app/**/*.*' 
+            #     # path: 'coverage/bobapp/*.*,coverage/bobapp/app/*.*,coverage/bobapp/app/**/*.*' 
             #     reporter: jest-junit 
             #     working-directory: front
 
