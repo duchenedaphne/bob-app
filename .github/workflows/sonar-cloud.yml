@@ -40,7 +40,7 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar
 
       - name: Cache Maven packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
@@ -50,15 +50,17 @@ jobs:
         run: |
           ls ${{ github.workspace }}/back/src/main/java/com/openclassrooms/*
 
-      # - name: Back Sonar Cloud Scan
-      #   env:
-      #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #   #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+      - name: Back Sonar Cloud Scan
+        env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            # Needed to get PR information, if any
+            # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
             # SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      #   run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.java.binaries=**/*.class -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bob-app
-      #   # with:
-      #   working-directory: back
-
+        run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bob-app
+        # -Dsonar.java.binaries=**/*.class
+        # with:
+        working-directory: back
+        
       - name: Front Sonar Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
