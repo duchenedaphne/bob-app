@@ -44,15 +44,15 @@ jobs:
 
       - name: List files 
         run: |
-          ls ${{ github.workspace }}/back/**/*
+          ls ${{ github.workspace }}/back/**/**/*
 
-      - name: Back Sonar Cloud Scan
-        env:
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-        run: mvn sonar:sonar verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.java.binaries=**/*.classe -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bob-app
-        # with:
-        working-directory: back
+      # - name: Back Sonar Cloud Scan
+      #   env:
+      #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+      #   run: mvn sonar:sonar verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.java.binaries=**/*.classe -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bob-app
+      #   # with:
+      #   working-directory: back
 
       - name: Front Sonar Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
