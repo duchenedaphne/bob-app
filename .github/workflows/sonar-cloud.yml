@@ -44,7 +44,7 @@ jobs:
 
       - name: List files 
         run: |
-          ls ${{ github.workspace }}/back/*
+          ls ${{ github.workspace }}/back/**/*
 
       - name: Back Sonar Cloud Scan
         env:
