@@ -69,13 +69,12 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         # working-directory: front
         with:
-          # projectBaseDir: front/
+          projectBaseDir: front/
           args: >
             -Dsonar.organization=duchenedaphne
             -Dsonar.projectKey=duchenedaphne_bob-app
-            -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.working.directory=front
-          # working-directory: front
+            -Dsonar.host.url=https://sonarcloud.io            
+          # working-directory: front # -Dsonar.working.directory=front
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
