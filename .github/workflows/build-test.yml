@@ -58,7 +58,7 @@ jobs:
                   git config user.name "${{ secrets.GIT_USER_NAME }}"
                   git config user.email "${{ secrets.GIT_USER_EMAIL }}"
                   git pull
-                  mv target/site target/site
+                  mv target/site jacoco
                   git add .
                   git commit -m "add jacoco report"
                   git push origin main
@@ -117,7 +117,7 @@ jobs:
               git config user.name "${{ secrets.GIT_USER_NAME }}"
               git config user.email "${{ secrets.GIT_USER_EMAIL }}"
               git pull
-              mv coverage coverage
+              mv coverage karma
               git add .
               git commit -m "add karma report"
               git push origin main
