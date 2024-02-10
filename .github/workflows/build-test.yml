@@ -58,13 +58,14 @@ jobs:
                   git config user.name "${{ secrets.GIT_USER_NAME }}"
                   git config user.email "${{ secrets.GIT_USER_EMAIL }}"
                   git pull
+                  sudo rm -rf coverage
                   mv target/site coverage
                   git add .
                   git commit -m "add jacoco report"
                   git push origin main
 
     front-build-test:
-      needs: back-build-test
+      # needs: back-build-test
 
       runs-on: ubuntu-latest
       defaults:
