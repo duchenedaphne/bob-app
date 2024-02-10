@@ -58,7 +58,7 @@ jobs:
                   git config user.name "${{ secrets.GIT_USER_NAME }}"
                   git config user.email "${{ secrets.GIT_USER_EMAIL }}"
                   git pull
-                  sudo rm -rf coverage
+                  rm -rf coverage
                   mv target/site coverage
                   git add .
                   git commit -m "add jacoco report"
@@ -118,7 +118,7 @@ jobs:
               git config user.name "${{ secrets.GIT_USER_NAME }}"
               git config user.email "${{ secrets.GIT_USER_EMAIL }}"
               git pull
-              sudo rm -rf karma
+              rm -rf karma
               mv coverage karma/coverage
               git add .
               git commit -m "add karma report"
