@@ -54,7 +54,7 @@ jobs:
       - name: Back Sonar Cloud Scan
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
-        run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bobapp-back Dsonar.projectBaseDir=back/
+        run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bobapp-back -Dsonar.projectBaseDir=back/
         working-directory: back
 
   front-sonar-cloud:
