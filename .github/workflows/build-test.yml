@@ -58,7 +58,7 @@ jobs:
                   git config user.name "${{ secrets.GIT_USER_NAME }}"
                   git config user.email "${{ secrets.GIT_USER_EMAIL }}"
                   git pull
-                  rm -force "jacoco"
+                  sudo rm -rf "jacoco"
                   mv target/site target/coverage
                   git add .
                   git commit -m "add jacoco report"
@@ -118,7 +118,7 @@ jobs:
               git config user.name "${{ secrets.GIT_USER_NAME }}"
               git config user.email "${{ secrets.GIT_USER_EMAIL }}"
               git pull
-              rm -force "karma"
+              sudo rm -rf "karma"
               mv coverage coverage/karma
               git add .
               git commit -m "add karma report"
