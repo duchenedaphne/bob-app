@@ -120,8 +120,8 @@ jobs:
               git config user.name "${{ secrets.GIT_USER_NAME }}"
               git config user.email "${{ secrets.GIT_USER_EMAIL }}"
               git pull
-              if (Test-Path "karma_coverage") {
-                Remove-Item -Recurse -Force "karma_coverage"
+              if (Test-Path "coverage_") {
+                Remove-Item -Recurse -Force "coverage_"
               }
               mv coverage coverage_
               git add .
