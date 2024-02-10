@@ -123,7 +123,7 @@ jobs:
               if (Test-Path "karma_coverage") {
                 Remove-Item -Recurse -Force "karma_coverage"
               }
-              mv coverage karma_coverage
+              mv coverage coverage_
               git add .
               git commit -m "add karma report"
               git push origin main
