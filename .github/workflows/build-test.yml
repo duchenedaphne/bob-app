@@ -52,22 +52,17 @@ jobs:
               with:
                 name: jacoco-coverage
                 path: back/target/site/jacoco
-                # path: ${{ github.workspace }}/back/target/site/jacoco
 
             - name: 'back report: commit and push'
               run: |
                   git config user.name "${{ secrets.GIT_USER_NAME }}"
                   git config user.email "${{ secrets.GIT_USER_EMAIL }}"
-                  git pull
-                  if (Test-Path "target") {
-                    Remove-Item -Recurse -Force "target"
-                  }
                   git add .
                   git commit -m "add jacoco report"
                   git push origin main
 
     front-build-test:
-      # needs: back-build-test
+      needs: back-build-test
 
       runs-on: ubuntu-latest
       defaults:
@@ -119,10 +114,6 @@ jobs:
             run: |
               git config user.name "${{ secrets.GIT_USER_NAME }}"
               git config user.email "${{ secrets.GIT_USER_EMAIL }}"
-              git pull
-              if (Test-Path "coverage") {
-                Remove-Item -Recurse -Force "coverage"
-              }
               git add .
               git commit -m "add karma report"
               git push origin main
