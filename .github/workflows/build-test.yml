@@ -58,9 +58,8 @@ jobs:
                   git config user.name "${{ secrets.GIT_USER_NAME }}"
                   git config user.email "${{ secrets.GIT_USER_EMAIL }}"
                   git pull
-                  if (Test-Path "jacoco") {
+                  if (Test-Path "jacoco") 
                     Remove-Item -Recurse -Force "jacoco"
-                  }
                   mv target/site target/coverage
                   git add .
                   git commit -m "add jacoco report"
@@ -120,9 +119,8 @@ jobs:
               git config user.name "${{ secrets.GIT_USER_NAME }}"
               git config user.email "${{ secrets.GIT_USER_EMAIL }}"
               git pull
-              if (Test-Path "karma") {
+              if (Test-Path "karma")
                 Remove-Item -Recurse -Force "karma"
-              }
               mv coverage coverage/karma
               git add .
               git commit -m "add karma report"
