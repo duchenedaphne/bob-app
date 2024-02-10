@@ -10,7 +10,7 @@ on:
 
 jobs:
     back-build-test:
-        runs-on: ubuntu-latest
+        runs-on: windows-latest
         defaults:
           run:
               working-directory: back
@@ -58,9 +58,10 @@ jobs:
                   git config user.name "${{ secrets.GIT_USER_NAME }}"
                   git config user.email "${{ secrets.GIT_USER_EMAIL }}"
                   git pull
-                  rm -rf coverage
-                  mkdir coverage
-                  mv target/site coverage
+                  if (Test-Path "target_site") {
+                      Remove-Item -Recurse -Force "target_site"
+                  }
+                  mv target/site target_site
                   git add .
                   git commit -m "add jacoco report"
                   git push origin main
@@ -68,7 +69,7 @@ jobs:
     front-build-test:
       # needs: back-build-test
 
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       defaults:
         run:
           working-directory: front
@@ -119,8 +120,9 @@ jobs:
               git config user.name "${{ secrets.GIT_USER_NAME }}"
               git config user.email "${{ secrets.GIT_USER_EMAIL }}"
               git pull
-              rm -rf karma
-              mkdir karma_coverage
+              if (Test-Path "karma_coverage") {
+                Remove-Item -Recurse -Force "karma_coverage"
+              }
               mv coverage karma_coverage
               git add .
               git commit -m "add karma report"
