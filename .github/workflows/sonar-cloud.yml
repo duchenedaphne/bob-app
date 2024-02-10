@@ -15,7 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Shallow clones should be disabled for a better relevancy of analysis
           fetch-depth: 0 
 
       - name: Set up Node JS
@@ -62,7 +61,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Shallow clones should be disabled for a better relevancy of analysis
           fetch-depth: 0 
 
       - name: Front Sonar Cloud Scan
