@@ -12,15 +12,19 @@ jobs:
   back-sonar-cloud:
     runs-on: ubuntu-latest
 
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
 
-      - name: Set up Node JS
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20 
+          node-version: '14.x'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Set up JDK
         uses: actions/setup-java@v4
@@ -35,6 +39,14 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
+      - name: Cache Node modules
+        uses: actions/cache@v4
+        with:
+          path: front/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Cache Maven packages
         uses: actions/cache@v4
         with:
@@ -42,39 +54,77 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: List files 
-        run: |
-          ls ${{ github.workspace }}/back/src/main/java/com/openclassrooms/*
-
-      - name: Back Sonar Cloud Scan
-        env:
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bob-app
+      - name: Back Install Dependencies
+        run: mvn -B clean install
         working-directory: back
 
-  front-sonar-cloud:
-    runs-on: ubuntu-latest
-    defaults: 
-      run:  
+      - name: Back Build
+        run: mvn -B clean package --file pom.xml
+        working-directory: back
+
+      - name: Back Test
+        run: mvn -B clean test jacoco:report
+        working-directory: back
+
+      - name: Front Install Dependencies
+        run: |
+          npm install
+          npm i karma-coverage-istanbul-reporter --save-dev
         working-directory: front
 
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 
+      - name: Front Build
+        run: npm run build
+        working-directory: front
 
-      - name: Front Sonar Cloud Scan
+      - name: Front Test
+        run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless
+        working-directory: front
+
+      - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
-        # working-directory: front
-        with:
-          projectBaseDir: front/
-          args: >
-            -Dsonar.organization=duchenedaphne
-            -Dsonar.projectKey=duchenedaphne_bob-app
-            -Dsonar.host.url=https://sonarcloud.io            
-          # working-directory: front # -Dsonar.working.directory=front
         env:
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: .
+
+
+
+  #     - name: Back Sonar Cloud Scan
+  #       env:
+  #           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #       run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bob-app
+  #       working-directory: back
+
+  # front-sonar-cloud:
+  #   runs-on: ubuntu-latest
+  #   defaults: 
+  #     run:  
+  #       working-directory: front
+
+  #   if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0 
+
+  #     - name: Cache SonarCloud packages
+  #       uses: actions/cache@v4
+  #       with:
+  #         path: ~/.sonar/cache
+  #         key: ${{ runner.os }}-sonar
+  #         restore-keys: ${{ runner.os }}-sonar
+
+  #     - name: Front Sonar Cloud Scan
+  #       uses: SonarSource/sonarcloud-github-action@master
+  #       with:
+  #         projectBaseDir: front/
+  #         args: >
+  #           -Dsonar.organization=duchenedaphne
+  #           -Dsonar.projectKey=duchenedaphne_bob-app
+  #           -Dsonar.host.url=https://sonarcloud.io
+  #       env:
+  #           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
 
