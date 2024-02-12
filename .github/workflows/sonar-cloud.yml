@@ -102,10 +102,11 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.javascript.lcov.reportPaths=coverage/bobapp/lcov.info
             -Dsonar.coverage.exclusions=**/node_modules/**,**/coverage_/**,**/Dockerfile,**/*.json,**/karma.conf.js,**/src/*.ts,**/src/environments/*.ts
+            -Dsonar.test.inclusions=**/*.spec.ts
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONT }}
             
-            # **/*.css,**/*.html
+            # **/**/*.css,**/**/*.html
 
 
 
