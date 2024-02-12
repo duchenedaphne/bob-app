@@ -2,7 +2,7 @@
 
 Get a daily joke from this funny french Bob's App !
 
-## ✔ Code Quality
+## ✔ Code quality
 
 <div>
 
