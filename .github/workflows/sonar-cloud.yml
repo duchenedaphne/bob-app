@@ -54,7 +54,7 @@ jobs:
       - name: Back Sonar Cloud Scan
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
-        run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bobapp-back -Dsonar.projectBaseDir=back/
+        run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bobapp-back -Dsonar.projectBaseDir=back/ -Dsonar.jacoco.reportPaths=back/target/site/jacoco/**.xml
         working-directory: back
 
   front-sonar-cloud:
@@ -95,7 +95,6 @@ jobs:
       - name: Front Install Dependencies
         run: |
           npm install
-          npm i karma-coverage-istanbul-reporter --save-dev
 
       - name: Front Build
         run: npm run build
@@ -111,6 +110,7 @@ jobs:
             -Dsonar.organization=duchenedaphne
             -Dsonar.projectKey=duchenedaphne_bobapp-front
             -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.javascript.lcov.reportPaths="front/coverage/bobapp/**.info","front/coverage/bobapp/**/**.info","front/coverage/bobapp/**/**/**.info"
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONT }}
 

@@ -61,13 +61,13 @@ jobs:
                   if (Test-Path "target_site") {
                       Remove-Item -Recurse -Force "target_site"
                   }
-                  mv target/site target_site
+                  mv target/site target_/site
                   git add .
                   git commit -m "add jacoco report"
                   git push origin main
 
     front-build-test:
-      # needs: back-build-test
+      needs: back-build-test
 
       runs-on: windows-latest
       defaults:
