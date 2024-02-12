@@ -58,8 +58,8 @@ jobs:
                   git config user.name "${{ secrets.GIT_USER_NAME }}"
                   git config user.email "${{ secrets.GIT_USER_EMAIL }}"
                   git pull
-                  if (Test-Path "target_") {
-                      Remove-Item -Recurse -Force "target_"
+                  if (Test-Path "target_site") {
+                      Remove-Item -Recurse -Force "target_site"
                   }
                   mv target/site target_site
                   git add .
@@ -101,7 +101,6 @@ jobs:
           - name: Front Install Dependencies
             run: |
               npm install
-              npm i karma-coverage-istanbul-reporter --save-dev
 
           - name: Front Build
             run: npm run build

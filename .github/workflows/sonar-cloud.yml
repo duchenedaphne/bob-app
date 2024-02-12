@@ -51,10 +51,14 @@ jobs:
       - name: Back Test
         run: mvn -B clean test
 
+      - name: List files 
+        run: |
+          ls ${{ github.workspace }}/back/target/site/jacoco/*
+
       - name: Back Sonar Cloud Scan
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
-        run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bobapp-back -Dsonar.projectBaseDir=back/ -Dsonar.jacoco.reportPaths=back/target/site/jacoco/**.xml
+        run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bobapp-back -Dsonar.projectBaseDir=back/ -Dsonar.jacoco.reportPaths=back/target/site/jacoco/*.xml
         working-directory: back
 
   front-sonar-cloud:
@@ -102,6 +106,10 @@ jobs:
       - name: Front Test
         run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless
 
+      - name: List files 
+        run: |
+          ls ${{ github.workspace }}/front/coverage/bobapp/*
+
       - name: Front Sonar Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
@@ -110,7 +118,7 @@ jobs:
             -Dsonar.organization=duchenedaphne
             -Dsonar.projectKey=duchenedaphne_bobapp-front
             -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.javascript.lcov.reportPaths=front/coverage/bobapp/**.info
+            -Dsonar.javascript.lcov.reportPaths=front/coverage/bobapp/*.info
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONT }}
 
