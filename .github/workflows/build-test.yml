@@ -7,6 +7,8 @@ on:
       branches:
           - main
   pull_request:
+      branches:
+          - main
 
 jobs:
     back-build-test:
@@ -45,13 +47,7 @@ jobs:
               run: mvn -B clean package --file pom.xml
 
             - name: Back Test
-              run: mvn -B clean test jacoco:report
-
-            - name: Upload Jacoco report
-              uses: actions/upload-artifact@v4
-              with:
-                name: jacoco-coverage
-                path: back/target/site/jacoco
+              run: mvn -B clean test
 
             - name: 'back report: commit and push'
               run: |
@@ -107,12 +103,6 @@ jobs:
 
           - name: Front Test
             run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless
-
-          - name: Upload Karma report
-            uses: actions/upload-artifact@v4
-            with:
-              name: Karma-coverage
-              path: front/coverage
 
           - name: 'front report: commit and push'
             run: |
