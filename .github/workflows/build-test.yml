@@ -61,7 +61,7 @@ jobs:
                   if (Test-Path "target_site") {
                       Remove-Item -Recurse -Force "target_site"
                   }
-                  mv target/site target_/site
+                  mv target target_
                   git add .
                   git commit -m "add jacoco report"
                   git push origin main
