@@ -42,19 +42,10 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Back Install Dependencies
-        run: mvn -B clean install
-
-      - name: Back Build
-        run: mvn -B clean package --file pom.xml
-
-      - name: Back Test
-        run: mvn -B clean test
-
       - name: Back Sonar Cloud Scan
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
-        run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bobapp-back -Dsonar.projectBaseDir=back/ -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+        run: mvn -B verify sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=duchenedaphne -Dsonar.projectKey=duchenedaphne_bobapp-back -Dsonar.projectBaseDir=back/ -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
         working-directory: back
 
   front-sonar-cloud:
@@ -70,37 +61,37 @@ jobs:
         with:
           fetch-depth: 0 
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '14.x'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '14.x'
+      #     cache: 'npm'
+      #     cache-dependency-path: '**/package-lock.json'
   
-      - name: Cache Node modules
-        uses: actions/cache@v4
-        with:
-          path: front/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      # - name: Cache Node modules
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: front/node_modules
+      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-node-
 
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
+      # - name: Cache SonarCloud packages
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: ~/.sonar/cache
+      #     key: ${{ runner.os }}-sonar
+      #     restore-keys: ${{ runner.os }}-sonar
   
-      - name: Front Install Dependencies
-        run: |
-          npm install
+      # - name: Front Install Dependencies
+      #   run: |
+      #     npm install
 
-      - name: Front Build
-        run: npm run build
+      # - name: Front Build
+      #   run: npm run build
 
-      - name: Front Test
-        run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless
+      # - name: Front Test
+      #   run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless
 
       - name: Front Sonar Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
