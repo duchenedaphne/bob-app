@@ -95,8 +95,7 @@ jobs:
                 ${{ runner.os }}-node-
 
           - name: Front Install Dependencies
-            run: |
-              npm install
+            run: npm install
 
           - name: Front Build
             run: npm run build
