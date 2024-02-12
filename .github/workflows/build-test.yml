@@ -58,10 +58,10 @@ jobs:
                   git config user.name "${{ secrets.GIT_USER_NAME }}"
                   git config user.email "${{ secrets.GIT_USER_EMAIL }}"
                   git pull
-                  if (Test-Path "target_site") {
-                      Remove-Item -Recurse -Force "target_site"
+                  if (Test-Path "target_") {
+                      Remove-Item -Recurse -Force "target_"
                   }
-                  mv target target_
+                  mv target/site target_site
                   git add .
                   git commit -m "add jacoco report"
                   git push origin main
