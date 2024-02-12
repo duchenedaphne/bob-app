@@ -2,13 +2,12 @@
 
 Get a daily joke from this funny french Bob's App !
 
-<p>
-    <a href="https://github.com/duchenedaphne/bob-app/actions/workflows/build-test.yml">
-        <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/build-test.yml/badge.svg" alt="Front Build & Test" style="max-width: 100%;">
-    </a>
-    <a href="https://github.com/duchenedaphne/bob-app/actions/workflows/sonar-cloud.yml">
-        <img src="https://github.com/duchenedaphne/bob-app/actions/workflows/sonar-cloud.yml/badge.svg" alt="Sonar Cloud" style="max-width: 100%;">
-    </a>
+## ✔ Code Quality
+
+<div>
+
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=duchenedaphne_bobapp-back)](https://sonarcloud.io/summary/new_code?id=duchenedaphne_bobapp-back)
+</div>
 
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=duchenedaphne_bobapp-back&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=duchenedaphne_bob-app)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=duchenedaphne_bobapp-back&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=duchenedaphne_bob-app)
@@ -20,10 +19,6 @@ Get a daily joke from this funny french Bob's App !
     <img src="https://img.shields.io/github/issues/duchenedaphne/bob-app" alt="GitHub issues">
 </a>
 </p>
-<div>
-
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=duchenedaphne_bobapp-back)](https://sonarcloud.io/summary/new_code?id=duchenedaphne_bobapp-back)
-</div>
 
 ## 🛠 Software tools
 
