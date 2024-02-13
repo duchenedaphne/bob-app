@@ -54,7 +54,7 @@ jobs:
                   git config user.name "${{ secrets.GIT_USER_NAME }}"
                   git config user.email "${{ secrets.GIT_USER_EMAIL }}"
                   git pull
-                  if [ test -d ${{ github.workspace }}/back/target_site ]; then rm -rf target_site; fi
+                  if test -d ${{ github.workspace }}/back/target_site; then rm -rf target_site; fi
                   mv target/site target_site
                   git add .
                   git commit -m "add jacoco report"
@@ -106,7 +106,7 @@ jobs:
               git config user.name "${{ secrets.GIT_USER_NAME }}"
               git config user.email "${{ secrets.GIT_USER_EMAIL }}"
               git pull
-              if [ test -d ${{ github.workspace }}/front/coverage_ ]; then rm -rf coverage_; fi
+              if test -d ${{ github.workspace }}/front/coverage_; then rm -rf coverage_; fi
               mv coverage coverage_
               git add .
               git commit -m "add karma report"
