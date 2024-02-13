@@ -34,7 +34,7 @@ jobs:
           uses: docker/build-push-action@v5
           with:
             context: ${{ github.workspace }}/back/
-            file: ./Dockerfile
+            file: Dockerfile
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/bobapp-back:latest
   
@@ -63,7 +63,7 @@ jobs:
           uses: docker/build-push-action@v5
           with:
             context: ${{ github.workspace }}/front/
-            file: ./Dockerfile
+            file: Dockerfile
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/bobapp-front:latest
   
