@@ -12,13 +12,6 @@ Get a daily joke from this funny french Bob's App !
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=duchenedaphne_bobapp-back&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=duchenedaphne_bob-app)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=duchenedaphne_bobapp-back&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=duchenedaphne_bob-app)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=duchenedaphne_bobapp-back&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=duchenedaphne_bobapp-back)
-<br>
-    <img src="https://img.shields.io/github/languages/code-size/duchenedaphne/bob-app" alt="GitHub code size in bytes">
-    <img src="https://img.shields.io/github/commit-activity/w/duchenedaphne/bob-app" alt="GitHub commit activity">
-    <a href="https://github.com/duchenedaphne/bob-app/issues">
-    <img src="https://img.shields.io/github/issues/duchenedaphne/bob-app" alt="GitHub issues">
-</a>
-</p>
 
 ## 🛠 Software tools
 
