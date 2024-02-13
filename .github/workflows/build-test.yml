@@ -54,6 +54,7 @@ jobs:
                   git config user.name "${{ secrets.GIT_USER_NAME }}"
                   git config user.email "${{ secrets.GIT_USER_EMAIL }}"
                   git pull
+                  if [ ${{ github.workspace }}/front/target_site ]; then rm -rf target_site; fi
                   mv target/site target_site
                   git add .
                   git commit -m "add jacoco report"
