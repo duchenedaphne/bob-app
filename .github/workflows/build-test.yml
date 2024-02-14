@@ -60,6 +60,20 @@ jobs:
                   git commit -m "add jacoco report"
                   git push origin main
 
+            - name: JUnit Test Report
+              uses: phoenix-actions/test-reporting@v8
+              id: junit-test-report
+              if: success() || failure()
+              with:
+                name: JUNIT Tests
+                path: ${{ github.workspace }}/back/target/site/jacoco/*.*
+                reporter: jest-junit
+                working-directory: back
+
+            - name: Read output variables
+              run: |
+                echo "url is ${{ steps.junit-test-report.outputs.runHtmlUrl }}"
+
     front-build-test:
       needs: back-build-test
 
