@@ -47,10 +47,9 @@ jobs:
               run: mvn -B clean package --file pom.xml
 
             - name: Back Test
-              id: back-test
               run: mvn -B clean test
 
-            - name: 'back report: commit and push'
+            - name: 'Add Jacoco report to repository'
               run: |
                   git config user.name "${{ secrets.GIT_USER_NAME }}"
                   git config user.email "${{ secrets.GIT_USER_EMAIL }}"
@@ -59,12 +58,7 @@ jobs:
                   mv target/site target_site
                   git add .
                   git commit -m "add jacoco report"
-                  git push origin main            
-
-            - name: Read output variables
-              run: |
-                echo "Total coverage ${{ steps.back-test.outputs.coverage-overall }}"
-                echo "Changed Files coverage ${{ steps.back-test.outputs.coverage-changed-files }}"
+                  git push origin main 
 
     front-build-test:
       needs: back-build-test
@@ -107,7 +101,7 @@ jobs:
           - name: Front Test
             run: npm run test -- --code-coverage=true --watch=false --browsers=ChromeHeadless
 
-          - name: 'front report: commit and push'
+          - name: 'Add Karma report to repository'
             run: |
               git config user.name "${{ secrets.GIT_USER_NAME }}"
               git config user.email "${{ secrets.GIT_USER_EMAIL }}"
