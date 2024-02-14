@@ -47,6 +47,7 @@ jobs:
               run: mvn -B clean package --file pom.xml
 
             - name: Back Test
+              id: back-test
               run: mvn -B clean test
 
             - name: 'back report: commit and push'
@@ -66,13 +67,15 @@ jobs:
               if: success() || failure()
               with:
                 name: JUNIT Tests
-                path: ${{ github.workspace }}/back/target/site/jacoco/*.*
+                path: ${{ github.workspace }}/back/target_site/jacoco/*.*
                 reporter: jest-junit
                 working-directory: back
 
             - name: Read output variables
               run: |
                 echo "url is ${{ steps.junit-test-report.outputs.runHtmlUrl }}"
+                echo "Total coverage ${{ steps.back-test.outputs.coverage-overall }}"
+                echo "Changed Files coverage ${{ steps.back-test.outputs.coverage-changed-files }}"
 
     front-build-test:
       needs: back-build-test
